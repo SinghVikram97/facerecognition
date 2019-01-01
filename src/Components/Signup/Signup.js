@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import './Signin.css'
+import './Signup.css'
 
-class Signin extends Component {
+class Signup extends Component {
   render() {
     return (
       <article className="br3 ba black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5">
         <main className="pa4 black-80">
           <form className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-              <legend className="f1 fw6 ph0 mh0">Sign In</legend>
+              <legend className="f1 fw6 ph0 mh0">Sign Up</legend>
+              <div className="mt3">
+                <label className="db fw6 lh-copy f4" for="name">Name</label>
+                <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="name"  id="name"/>
+              </div>
               <div className="mt3">
                 <label className="db fw6 lh-copy f4" for="email-address">Email</label>
                 <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address"  id="email-address"/>
@@ -22,11 +26,8 @@ class Signin extends Component {
               <input 
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f4 dib" 
               type="submit" 
-              value="Sign in"
+              value="Sign up"
               onClick={()=> this.props.onRouteChange('home')}/>
-            </div>
-            <div className="lh-copy mt3">
-              <p id="signin" onClick={()=> this.props.onRouteChange('register')} className="f3 link dim black db">Register</p>
             </div>
           </form>
           </main>
@@ -35,4 +36,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default Signup;
