@@ -67,8 +67,8 @@ class App extends Component {
        .then((response=>this.displayFaceBox(this.calculateFaceLocation(response))))
        .catch((err)=>console.log(err));
   }
-  onRouteChange=()=>{
-    this.setState({route:'home'});
+  onRouteChange=(route)=>{
+    this.setState({route:route});
   }
   render() {
     return (
@@ -77,7 +77,7 @@ class App extends Component {
           className='particles'
           params={particleOptions}
         />
-        <Navigation/>
+        <Navigation onRouteChange={this.onRouteChange}/>
         {
           this.state.route==='signin'
             ? <Signin onRouteChange={this.onRouteChange}/>

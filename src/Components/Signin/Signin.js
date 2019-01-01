@@ -23,7 +23,7 @@ class Signin extends Component {
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f4 dib" 
               type="submit" 
               value="Sign in"
-              onClick={this.props.onRouteChange}/>
+              onClick={this.props.onRouteChange('home')}/>
             </div>
             <div className="lh-copy mt3">
               <a href="#0" className="f3 link dim black db">Register</a>
