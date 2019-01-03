@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from "react";
 import Navigation from "./Components/Navigation/Navigation";
 import Logo from "./Components/Logo/Logo";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
@@ -34,11 +36,30 @@ class App extends Component {
       imageUrl: "",
       box: {},
       route: "signin",
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     };
   }
 
   componentDidMount() {}
+
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+      }
+    })
+  }
 
   calculateFaceLocation = data => {
     const clarifaiFace =
@@ -73,11 +94,12 @@ class App extends Component {
     });
     app.models
       .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-      .then(response =>
+      .then((response) => {
         this.displayFaceBox(this.calculateFaceLocation(response))
-      )
+      })
       .catch(err => console.log(err));
   };
+
   onRouteChange = route => {
     if (route === "signout") {
       this.setState({
@@ -93,34 +115,66 @@ class App extends Component {
     });
   };
   render() {
-    return (
-      <div className="App">
-        <Particles className="particles" params={particleOptions} />{" "}
-        <Navigation
-          isSignedIn={this.state.isSignedIn}
-          onRouteChange={this.onRouteChange}
-        />{" "}
-        {this.state.route === "home" ? (
-          <div>
-            <Logo />
-            <Rank />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onSubmit={this.onSubmit}
-            />{" "}
-            <FaceRecognition
-              box={this.state.box}
-              imageUrl={this.state.imageUrl}
-            />
-          </div>
-        ) : this.state.route === "signin" ? (
-          <Signin onRouteChange={this.onRouteChange} />
-        ) : (
-          <Signup onRouteChange={this.onRouteChange} />
-        )}
-      </div>
-    );
-  }
+    return ( <
+        div className = "App" >
+        <
+        Particles className = "particles"
+        params = {
+          particleOptions
+        }
+        />{" "} <
+        Navigation isSignedIn = {
+          this.state.isSignedIn
+        }
+        onRouteChange = {
+          this.onRouteChange
+        }
+        />{" "} {
+        this.state.route === "home" ? ( <
+          div >
+          <
+          Logo / >
+          <
+          Rank name = {
+            this.state.user.name
+          }
+          entries = {
+            this.state.user.entries
+          }
+          / > <
+          ImageLinkForm onInputChange = {
+            this.onInputChange
+          }
+          onSubmit = {
+            this.onSubmit
+          }
+          />{" "} <
+          FaceRecognition box = {
+            this.state.box
+          }
+          imageUrl = {
+            this.state.imageUrl
+          }
+          /> < /
+          div >
+        ) : this.state.route === "signin" ? ( <
+          Signin onRouteChange = {
+            this.onRouteChange
+          }
+          />
+        ) : ( <
+          Signup onRouteChange = {
+            this.onRouteChange
+          }
+          loadUser = {
+            this.loadUser
+          }
+          />
+        )
+      } <
+      /div>
+  );
+}
 }
 
 export default App;
