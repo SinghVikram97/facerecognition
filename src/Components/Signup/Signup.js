@@ -32,7 +32,7 @@ class Signup extends Component {
 
   onRegister = () => {
     console.log('Hello');
-    fetch('http://localhost:3000/register', {
+    fetch('https://arcane-harbor-31537.herokuapp.com/register', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'
