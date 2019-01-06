@@ -67,7 +67,7 @@ class Signup extends Component {
       div className = "mt3" >
       <
       label className = "db fw6 lh-copy f4"
-      for = "name" > Name < /label> <
+      htmlFor = "name" > Name < /label> <
       input className = "pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
       type = "text"
       name = "name"
@@ -80,7 +80,7 @@ class Signup extends Component {
       div className = "mt3" >
       <
       label className = "db fw6 lh-copy f4"
-      for = "email-address" > Email < /label> <
+      htmlFor = "email-address" > Email < /label> <
       input className = "pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
       type = "email"
       name = "email-address"
@@ -93,7 +93,7 @@ class Signup extends Component {
       div className = "mv3" >
       <
       label className = "db fw6 lh-copy f4"
-      for = "password" > Password < /label> <
+      htmlFor = "password" > Password < /label> <
       input className = "b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
       type = "password"
       name = "password"
